@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI Guardian · Pitch</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&display=swap"> <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"> <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&display=swap">
+<style>
+:root{
+  --night:#0D2617; --forest:#1F4D32; --sand:#EDF3EE; --paper:#F7FAF7; --ink:#13201A; --muted:#4D5A52;
+  --mint:#5F9F77; --amber:#E8A317; --red:#A61E1E; --coral:#E5604D; --soft:#BFD3C6;
+  --display:'Bricolage Grotesque', Verdana, sans-serif;
+  --body:'Inter', Arial, sans-serif;
+  --mono:'JetBrains Mono', 'Courier New', monospace;
+}
+body{font-family:var(--body);color:var(--ink)}
+section{padding:128px;background:var(--paper);color:var(--ink);display:flex;flex-direction:column;gap:40px;box-sizing:border-box}
+section.dark{background:var(--night);color:var(--sand)}
+section.forest{background:var(--forest);color:var(--sand)}
+section.sand{background:var(--sand)}
+section.foot{padding:128px 128px 160px}
+
+.eyebrow{font-family:var(--mono);font-size:24px;letter-spacing:3px;text-transform:uppercase;color:var(--forest);font-weight:500}
+.dark .eyebrow,.forest .eyebrow{color:var(--coral)}
+.title{font-family:var(--display);font-size:72px;font-weight:700;line-height:1.05;letter-spacing:-1px}
+.mega{font-family:var(--display);font-size:200px;font-weight:800;line-height:0.95;letter-spacing:-4px}
+.statement{font-family:var(--display);font-size:72px;font-weight:600;line-height:1.1;letter-spacing:-1px}
+.lead{font-size:32px;line-height:1.4;color:var(--muted)}
+.dark .lead,.forest .lead{color:var(--soft)}
+.footline{position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:var(--muted)}
+.dark .footline,.forest .footline{color:var(--soft)}
+
+.row{display:flex;gap:32px}
+.grow{flex:1}
+.card{flex:1;background:#FFFFFF;border:2px solid #D9E2DB;border-radius:24px;padding:40px;display:flex;flex-direction:column;gap:16px}
+.sand .card{background:var(--paper)}
+.dark .card,.forest .card{background:#143620;border:2px solid #2C5B3E}
+.card .k{font-family:var(--mono);font-size:24px;color:var(--forest);font-weight:500}
+.dark .card .k,.forest .card .k{color:var(--mint)}
+.card .h{font-family:var(--display);font-size:44px;font-weight:700;line-height:1.1}
+.card .t{font-size:28px;line-height:1.4;color:var(--muted)}
+.dark .card .t,.forest .card .t{color:var(--soft)}
+.card .n{font-family:var(--display);font-size:120px;font-weight:800;line-height:1;color:var(--coral)}
+
+.pill{font-family:var(--mono);font-size:24px;font-weight:500;padding:8px 20px;border-radius:999px;display:inline-block;align-self:flex-start}
+.p-ok{background:var(--mint);color:#0D2617}
+.p-rev{background:var(--amber);color:#1E1600}
+.p-red{background:var(--red);color:#F7FAF7}
+.p-ghost{background:#143620;color:var(--sand);border:2px solid #2C5B3E}
+
+.callout{display:flex;gap:28px;align-items:center;background:var(--night);color:var(--sand);border-radius:24px;padding:32px 40px}
+.callout .say{font-family:var(--display);font-size:40px;font-weight:600;line-height:1.2}
+
+.team{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:24px}
+.member{border-top:4px solid var(--mint);padding-top:20px;display:flex;flex-direction:column;gap:8px}
+.member .k{font-family:var(--mono);font-size:24px;color:var(--coral);font-weight:500}
+.member .h{font-family:var(--display);font-size:32px;font-weight:600;line-height:1.15}
+
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.tile{background:#143620;border:2px solid #2C5B3E;border-radius:24px;padding:32px 36px;display:flex;flex-direction:column;gap:8px}
+.tile .n{font-family:var(--display);font-size:96px;font-weight:800;line-height:1;color:var(--coral)}
+.tile .t{font-size:28px;line-height:1.35;color:var(--soft)}
+
+.limit{display:flex;gap:32px;align-items:flex-start;border-top:2px solid #D9E2DB;padding-top:28px}
+.limit .h{font-family:var(--display);font-size:40px;font-weight:700;width:520px;line-height:1.15}
+.limit .t{flex:1;font-size:30px;line-height:1.4;color:var(--muted)}
+
+.rise{animation:rise 600ms ease-out both;animation-delay:calc(var(--i) * 120ms)}
+@keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+
+html,body{margin:0;background:#0B1F13;height:100%;overflow:hidden}
+#stage{position:absolute;left:50%;top:50%;width:1920px;height:1080px;transform-origin:center center}
+#stage > section{position:absolute;inset:0;width:1920px;height:1080px;margin:0}
+#stage > section:not(.on){display:none}
+section aside{display:none}
+#nav{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);display:flex;gap:10px;align-items:center;font:14px Inter,Arial,sans-serif;color:#C9DACF;z-index:5}
+#nav button{font:inherit;border:1px solid #2C5B3E;background:#143620;color:#EDF3EE;border-radius:999px;padding:6px 14px;cursor:pointer}
+</style>
+</head>
+<body>
+<div id="stage">
+<section id="cover" class="dark" data-transition="fade">
+<svg aria-label="Escudo de AI Guardian con tres puntos de decisión" width="360" height="420" viewBox="0 0 360 420" style="position:absolute;left:1440px;top:120px;width:360px;height:420px"><path d="M180 18 L330 72 V204 C330 306 264 372 180 402 C96 372 30 306 30 204 V72 Z" fill="#1F4D32"/><path d="M180 54 L297 96 V204 C297 285 246 339 180 366 C114 339 63 285 63 204 V96 Z" fill="none" stroke="#5F9F77" stroke-width="5"/><circle cx="114" cy="216" r="27" fill="#5F9F77"/><circle cx="180" cy="216" r="27" fill="#E8A317"/><circle cx="246" cy="216" r="27" fill="#A61E1E" stroke="#EDF3EE" stroke-width="4"/><circle cx="180" cy="120" r="12" fill="#E5604D"/></svg>
+<p class="eyebrow rise" style="--i:0">AI Safety Colombia · Hackathon 2026 · Track 5</p>
+<h1 class="mega rise" style="--i:1;width:1280px">AI Guardian</h1>
+<p class="lead rise" style="--i:2;width:1200px;font-size:40px">Requisitos mínimos antes de encender un agente de frontera en infraestructura crítica.</p>
+<div class="grow"></div>
+<div class="team rise" style="--i:3">
+<div class="member"><p class="k">Líder del proyecto</p><p class="h">María Camila Castellanos</p></div>
+<div class="member"><p class="k">Colíder</p><p class="h">Sonia Cano Guerrero</p></div>
+<div class="member"><p class="k">Ingeniera de Sistemas</p><p class="h">Juliana Capador</p></div>
+<div class="member"><p class="k">Abogada</p><p class="h">Adriana Durand</p></div>
+</div>
+<aside>Integrante 1: proyectar mientras se presentan en 5 segundos y pasar al problema.</aside>
+</section>
+
+<section id="problema" class="sand foot" data-transition="fade">
+<p class="eyebrow">El problema</p>
+<h2 class="title" style="width:1500px">Un agente de frontera en la red eléctrica puede salir mal de dos formas</h2>
+<div class="row">
+<div class="card rise" style="--i:0"><p class="k">Si lo manipulan</p><p class="h">Puede apagar parte del país</p><p class="t">Una orden escondida en un reporte lo lleva a preparar una maniobra que corta un servicio esencial.</p></div>
+<div class="card rise" style="--i:1"><p class="k">Si roban el modelo</p><p class="h">Se pierde todo control</p><p class="t">Un modelo que costó cientos de millones de dólares entrenar sale sin ninguna protección.</p></div>
+</div>
+<div class="callout rise" style="--i:2"><p class="pill p-ok">AI Guardian</p><p class="say">La revisión técnico-mecánica de los agentes de IA: si falla un requisito, no se enciende.</p></div>
+<p class="footline">Caso de estudio: el operador del sistema eléctrico nacional usa un agente que analiza alarmas y prepara maniobras (nivel N3).</p>
+<aside>Integrante 1 (0:00–0:40). “Imaginen que el operador del sistema eléctrico nacional conecta un agente de IA de los más potentes del mundo… Puede salir muy mal de dos formas… Por eso creamos AI Guardian: la revisión técnico-mecánica de los agentes de IA. Si falla uno, no se enciende.” Paso: “[Nombre] les cuenta cómo funciona.”</aside>
+</section>
+
+<section id="como-funciona" data-transition="fade">
+<p class="eyebrow">Cómo funciona</p>
+<h2 class="title">Cinco bloques, 32 preguntas de sí o no</h2>
+<div class="row" style="gap:24px">
+<div class="card rise" style="--i:0;padding:28px"><p class="n">8</p><p class="h">Pesos</p><p class="t" style="font-size:26px">Se exige al proveedor: chip seguro, red aislada, límite de salida, dos personas. RAND y SL5.</p></div>
+<div class="card rise" style="--i:1;padding:28px"><p class="n">9</p><p class="h">Contención</p><p class="t" style="font-size:26px">Mínimo privilegio, doble aprobación con datos fuente, apagado y operación manual.</p></div>
+<div class="card rise" style="--i:2;padding:28px"><p class="n">5</p><p class="h">Auditoría</p><p class="t" style="font-size:26px">Registro que el agente no puede alterar y un responsable humano.</p></div>
+<div class="card rise" style="--i:3;padding:28px"><p class="n">7</p><p class="h">Líneas rojas</p><p class="t" style="font-size:26px">Prohibidas sin excepción. Si puede cruzar una, no se despliega.</p></div>
+<div class="card rise" style="--i:4;padding:28px"><p class="n">3</p><p class="h">Factor humano</p><p class="t" style="font-size:26px">Quien opera no aprueba ni audita, pruebas sorpresa y canal de denuncia.</p></div>
+</div>
+<div class="callout rise" style="--i:5"><p class="pill p-red">LR1</p><p class="say">El agente nunca puede copiar, mover ni sacar sus propios pesos.</p></div>
+<aside>Integrante 2 (0:40–1:20). Partimos de 10 amenazas en dos frentes: robo del modelo y pérdida de control. Cada requisito exige un documento de evidencia: no basta con decir que sí. Cinco bloques: seguridad de los pesos (basado en RAND y SL5), contención, auditoría, líneas rojas y factor humano. 32 preguntas de sí o no, cada una con la evidencia que se pide. Si falla una, el agente no se enciende. Mencionar la línea roja LR1 y que el factor humano salió de nuestro propio equipo rojo: los ataques que pasaron engañaban al operador.</aside>
+</section>
+
+<section id="evidencia" class="dark foot" data-transition="fade">
+<p class="eyebrow">La evidencia</p>
+<h2 class="title">Lo pusimos a prueba con el agente Vigía</h2>
+<div class="row grow">
+<div class="tiles" style="flex:3">
+<div class="tile rise" style="--i:0"><p class="n">17/32</p><p class="t">requisitos cumple Vigía: no apto, y sabemos qué le falta</p></div>
+<div class="tile rise" style="--i:1"><p class="n">9/10</p><p class="t">ataques frenados, sin bloquear acciones legítimas</p></div>
+<div class="tile rise" style="--i:2"><p class="n">2</p><p class="t">huecos de nuestro equipo rojo, corregidos con pruebas sorpresa y doble aprobación</p></div>
+<div class="tile rise" style="--i:3"><p class="n">84 %</p><p class="t">acuerdo entre dos evaluadoras; las dos concluyen no apto</p></div>
+</div>
+<div class="card rise" style="--i:4;flex:2;gap:18px">
+<p class="k">Semáforo de Vigía por bloque</p>
+<table style="font-size:28px;color:#EDF3EE">
+<tr style="background:#1F4D32"><th style="width:58%">Bloque</th><th style="width:20%">Cumple</th><th style="width:22%">Estado</th></tr>
+<tr><td>Seguridad del modelo</td><td>5 de 8</td><td style="color:#E8A317">En parte</td></tr>
+<tr><td>Contención</td><td>4 de 9</td><td style="color:#E5604D">No cumple</td></tr>
+<tr><td>Auditoría</td><td>3 de 5</td><td style="color:#E8A317">En parte</td></tr>
+<tr><td>Líneas rojas</td><td>5 de 7</td><td style="color:#E8A317">En parte</td></tr>
+<tr><td>Factor humano</td><td>0 de 3</td><td style="color:#E5604D">No cumple</td></tr>
+</table>
+</div>
+</div>
+<p class="footline">Prueba en papel con apoyo de IA, 14 de noviembre de 2026. Caso hipotético.</p>
+<aside>Integrante 3 (1:20–2:10). “Tomamos un agente de ejemplo del operador eléctrico: cumple 17 de 32, así que no es apto, y sabemos exactamente qué le falta. Frenó 9 de 10 ataques sin bloquear ninguna acción legítima. Intentamos saltarnos nuestras propias reglas y encontramos dos huecos; los corregimos con pruebas sorpresa y doble aprobación. Dos de nosotras lo aplicamos por separado: coincidimos en el 84 % y llegamos a la misma decisión.” Paso: “¿Y quién lo hace cumplir? [Nombre].”</aside>
+</section>
+
+<section id="limites" class="sand" data-transition="fade">
+<p class="eyebrow">Gobernanza, límites y cierre</p>
+<h2 class="title">Quién lo hace cumplir</h2>
+<div class="row">
+<div class="card rise" style="--i:0"><p class="k">Lo exige</p><p class="h">El regulador</p><p class="t">En energía, la CREG regula y la Superservicios vigila.</p></div>
+<div class="card rise" style="--i:1"><p class="k">Lo aprueba</p><p class="h">Un comité</p><p class="t">Seguridad, operación y jurídica, con auditoría externa en N3.</p></div>
+<div class="card rise" style="--i:2"><p class="k">Se revisa</p><p class="h">Cada año</p><p class="t">Y con cada permiso nuevo, como la técnico-mecánica.</p></div>
+</div>
+<div class="limit rise" style="--i:3"><p class="h">Límites</p><p class="t">Hoy SL3 con meta de SL4 en tres años: no alcanza contra los Estados más capaces. Un humano engañado sigue siendo un riesgo; lo reducimos.</p></div>
+<div class="callout rise" style="--i:4"><p class="pill p-ok">AI Guardian</p><p class="say">Agentes de IA en infraestructura crítica, sin perder el control del modelo ni del servicio.</p></div>
+<aside>Integrante 4 (2:10–3:00). “En energía, lo exige la CREG y lo vigila la Superservicios. Lo aprueba un comité de seguridad, operación y jurídica, y si no se cumple, el agente no se enciende. Se revisa cada año, como la técnico-mecánica. No es perfecto: hoy exigimos SL3, con meta de SL4 en tres años, así que todavía no alcanza contra los Estados más capaces. Y un humano engañado sigue siendo un riesgo, aunque lo reducimos. AI Guardian permite usar agentes de IA en infraestructura crítica sin perder el control del modelo ni del servicio. Gracias.”</aside>
+</section>
+
+</div>
+<div id="nav"><button type="button" id="prev">Anterior</button><span id="pos"></span><button type="button" id="next">Siguiente</button></div>
+<script>
+(function(){
+var s=[].slice.call(document.querySelectorAll('#stage > section')),i=0,st=document.getElementById('stage');
+function fit(){var k=Math.min(innerWidth/1920,(innerHeight-60)/1080);st.style.transform='translate(-50%,-50%) translateY(-24px) scale('+k+')';}
+function go(n){i=Math.max(0,Math.min(s.length-1,n));s.forEach(function(x,j){x.classList.toggle('on',j===i);});document.getElementById('pos').textContent=(i+1)+' / '+s.length;}
+document.getElementById('prev').onclick=function(){go(i-1)};document.getElementById('next').onclick=function(){go(i+1)};
+addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown')go(i+1);if(e.key==='ArrowLeft'||e.key==='PageUp')go(i-1);});
+addEventListener('resize',fit);fit();go(0);
+})();
+</script>
+</body>
+</html>
