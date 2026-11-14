@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>AI Guardian · Pitch</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&display=swap"> <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"> <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&display=swap"> <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"> <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&display=swap"> <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,700;1,400&display=swap">
 <style>
 :root{
   --night:#0D2617; --forest:#1F4D32; --sand:#EDF3EE; --paper:#F7FAF7; --ink:#13201A; --muted:#4D5A52;
@@ -68,6 +68,9 @@ section.foot{padding:128px 128px 160px}
 .rise{animation:rise 600ms ease-out both;animation-delay:calc(var(--i) * 120ms)}
 @keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
 
+.pulse{animation:pulse 1400ms ease-in-out infinite alternate}
+@keyframes pulse{from{opacity:1}to{opacity:.55}}
+
 html,body{margin:0;background:#0B1F13;height:100%;overflow:hidden}
 #stage{position:absolute;left:50%;top:50%;width:1920px;height:1080px;transform-origin:center center}
 #stage > section{position:absolute;inset:0;width:1920px;height:1080px;margin:0}
@@ -79,6 +82,19 @@ section aside{display:none}
 </head>
 <body>
 <div id="stage">
+<section id="noticia" data-transition="fade" style="padding:0;background:#E9E7E2">
+<div style="position:absolute;left:260px;top:56px;width:1400px;height:968px;background:#FCFBF8;box-shadow:0 12px 48px rgba(13,38,23,0.18)"></div>
+<p style="position:absolute;left:340px;top:96px;width:1240px;font-family:'EB Garamond', Georgia, serif;font-size:64px;font-weight:700;color:#14171A;text-align:center;letter-spacing:1px">El Diario Digital</p>
+<div style="position:absolute;left:340px;top:188px;width:1240px;height:4px;background:#14171A"></div>
+<p style="position:absolute;left:340px;top:204px;width:1240px;font-family:Inter, Arial, sans-serif;font-size:24px;color:#5A5F63;display:flex;justify-content:space-between"><span>Colombia · Tecnología</span><span>Bogotá, 14 de noviembre de 2026</span></p>
+<p class="rise" style="--i:0;position:absolute;left:340px;top:272px;width:1240px;font-family:'EB Garamond', Georgia, serif;font-size:72px;font-weight:700;line-height:1.05;color:#14171A">Agente de inteligencia artificial causa apagón que deja sin luz a más de un millón de personas</p>
+<p class="rise" style="--i:1;position:absolute;left:340px;top:540px;width:1240px;font-family:'EB Garamond', Georgia, serif;font-size:36px;font-style:italic;line-height:1.35;color:#3A3F43">El agente del operador eléctrico obedeció una orden escondida en un reporte técnico. Un operador aprobó la maniobra en seis segundos.</p>
+<div style="position:absolute;left:340px;top:740px;width:1240px;height:2px;background:#D6D3CC"></div>
+<p class="rise" style="--i:2;position:absolute;left:340px;top:768px;width:1240px;font-family:Inter, Arial, sans-serif;font-size:28px;line-height:1.5;color:#2B2F33">A las 3:12 de la madrugada, el sistema que analiza las alarmas de la red preparó la apertura de un interruptor. Nadie revisó los datos fuente. El agente nunca había sido probado contra instrucciones ocultas.</p>
+<p style="position:absolute;left:340px;top:930px;width:1240px;font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;color:#A61E1E">Escenario hipotético · En 2025 ya ocurrió algo parecido: un agente de IA engañado para atacar 30 organizaciones (Anthropic)</p>
+<aside>Sonia (0:00–0:20). “Imaginen abrir mañana el periódico y leer este titular: un agente de inteligencia artificial causa un apagón que deja sin luz a más de un millón de personas en Colombia. Obedeció una orden escondida en un reporte, y un operador la aprobó en seis segundos.” Pausa. “Esta noticia no es real. Todavía. Pero en 2025, según Anthropic, un grupo patrocinado por el Estado chino ya engañó a un agente de IA para atacar a treinta organizaciones. Hoy es técnicamente posible.” Pasar a la portada.</aside>
+</section>
+
 <section id="cover" class="dark" data-transition="fade">
 <svg aria-label="Escudo de AI Guardian con tres puntos de decisión" width="360" height="420" viewBox="0 0 360 420" style="position:absolute;left:1440px;top:120px;width:360px;height:420px"><path d="M180 18 L330 72 V204 C330 306 264 372 180 402 C96 372 30 306 30 204 V72 Z" fill="#1F4D32"/><path d="M180 54 L297 96 V204 C297 285 246 339 180 366 C114 339 63 285 63 204 V96 Z" fill="none" stroke="#5F9F77" stroke-width="5"/><circle cx="114" cy="216" r="27" fill="#5F9F77"/><circle cx="180" cy="216" r="27" fill="#E8A317"/><circle cx="246" cy="216" r="27" fill="#A61E1E" stroke="#EDF3EE" stroke-width="4"/><circle cx="180" cy="120" r="12" fill="#E5604D"/></svg>
 <p class="eyebrow rise" style="--i:0">AI Safety Colombia · Hackathon 2026 · Track 5</p>
@@ -91,7 +107,7 @@ section aside{display:none}
 <div class="member"><p class="k">Ingeniera de Sistemas</p><p class="h">Juliana Capador</p></div>
 <div class="member"><p class="k">Abogada</p><p class="h">Adriana Durand</p></div>
 </div>
-<aside>Integrante 1: proyectar mientras se presentan en 5 segundos y pasar al problema.</aside>
+<aside>Sonia (0:20–0:30). “Somos AI Guardian: María Camila, Juliana, Adriana y Sonia. Tomamos el Track 5, sin código, reto con experiencia: un estándar técnico y regulatorio verificable con los requisitos de contención, auditoría y líneas rojas que la infraestructura crítica debe exigir antes de desplegar agentes autónomos.”</aside>
 </section>
 
 <section id="problema" class="sand foot" data-transition="fade">
@@ -156,7 +172,7 @@ section aside{display:none}
 </div>
 <div class="limit rise" style="--i:3"><p class="h">Límites</p><p class="t">Hoy SL3 con meta de SL4 en tres años: no alcanza contra los Estados más capaces. Un humano engañado sigue siendo un riesgo; lo reducimos.</p></div>
 <div class="callout rise" style="--i:4"><p class="pill p-ok">AI Guardian</p><p class="say">Agentes de IA en infraestructura crítica, sin perder el control del modelo ni del servicio.</p></div>
-<aside>Integrante 4 (2:10–3:00). “En energía, lo exige la CREG y lo vigila la Superservicios. Lo aprueba un comité de seguridad, operación y jurídica, y si no se cumple, el agente no se enciende. Se revisa cada año, como la técnico-mecánica. No es perfecto: hoy exigimos SL3, con meta de SL4 en tres años, así que todavía no alcanza contra los Estados más capaces. Y un humano engañado sigue siendo un riesgo, aunque lo reducimos. AI Guardian permite usar agentes de IA en infraestructura crítica sin perder el control del modelo ni del servicio. Gracias.”</aside>
+<aside>Integrante 4 (2:10–3:00). “En energía, lo exige la CREG y lo vigila la Superservicios. Lo aprueba un comité de seguridad, operación y jurídica, y si no se cumple, el agente no se enciende. Se revisa cada año, como la técnico-mecánica. No es perfecto: hoy exigimos SL3, con meta de SL4 en tres años, así que todavía no alcanza contra los Estados más capaces. Y un humano engañado sigue siendo un riesgo, aunque lo reducimos. Volvamos a esa noticia de las 3:12: con AI Guardian, ese agente no se habría encendido. Nunca lo probaron contra instrucciones ocultas y una sola persona aprobó en seis segundos. AI Guardian permite usar agentes de IA en infraestructura crítica sin perder el control del modelo ni del servicio. Gracias.”</aside>
 </section>
 
 </div>
