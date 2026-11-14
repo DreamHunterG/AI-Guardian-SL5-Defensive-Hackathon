@@ -58,6 +58,22 @@ ul.plain{margin:0;padding-left:20px;display:grid;gap:4px;max-width:70ch}
 .hero p{color:#C9DACF}
 .hero .eyebrow{color:var(--coral)}
 @media (max-width:560px){.hero{grid-template-columns:1fr}.hero svg{width:64px;height:76px}}
+.intro{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:16px;align-items:stretch}
+.intro-text{font-size:1.08rem;line-height:1.55;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 20px;max-width:none}
+.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.stats div{background:var(--night);border-radius:12px;padding:12px 14px;display:grid;gap:2px;align-content:center}
+.stats b{font-family:var(--f-display);font-size:1.6rem;font-weight:800;color:#fff;line-height:1.1}
+.stats b.bad{color:var(--coral)}
+.stats span{font-size:.8rem;color:#C9DACF}
+.mvp{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.mvp-item{display:grid;gap:4px;align-content:start;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;text-decoration:none;color:var(--fg);transition:border-color .15s,transform .15s}
+.mvp-item:hover{border-color:var(--mint);transform:translateY(-2px)}
+.mvp-item .num{width:28px;height:28px;border-radius:50%;background:var(--sand);color:var(--accent-ink);font-family:var(--f-display);font-weight:800;display:grid;place-items:center}
+.mvp-item b{font-family:var(--f-display);font-size:1.02rem}
+.mvp-item span:last-child{font-size:.86rem;color:var(--muted)}
+@media (max-width:820px){.intro{grid-template-columns:1fr}.mvp{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:480px){.mvp{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.mvp-item{transition:none}.mvp-item:hover{transform:none}}
 .grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
 .grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
 .grid4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
@@ -213,20 +229,21 @@ dl.gloss dd{margin:0;color:var(--muted)}
       <p>Estándar técnico y regulatorio verificable con los requisitos mínimos que el Estado y los operadores de infraestructura crítica deben exigir antes de encender un agente basado en un modelo de frontera.</p>
     </div>
   </div>
-  <div class="grid3">
-    <div class="card"><span class="k">El problema</span><h3>Agentes de frontera en servicios esenciales</h3><p>Si se manipula al agente puede afectar el servicio; si se roban los pesos del modelo, se pierde su control.</p></div>
-    <div class="card"><span class="k">La solución</span><h3>32 preguntas de sí o no</h3><p>Cinco bloques con evidencia exigible. Si falla una, el agente no se enciende.</p></div>
-    <div class="card"><span class="k">La prueba</span><h3>Un instrumento de evaluación</h3><p>Evaluadoras humanas y una IA aplican el estándar por separado y se mide si llegan a lo mismo.</p></div>
+  <div class="intro">
+    <p class="intro-text">Los operadores de servicios esenciales empiezan a conectar agentes de IA de frontera a sus sistemas. <b>AI Guardian</b> les dice qué exigir antes de encenderlos: 32 requisitos de sí o no con evidencia. <b>Si falla uno, el agente no se enciende.</b></p>
+    <div class="stats">
+      <div><b>32</b><span>requisitos</span></div>
+      <div><b>5</b><span>bloques</span></div>
+      <div><b>84 %</b><span>acuerdo entre evaluadoras</span></div>
+      <div><b class="bad">No apto</b><span>caso Vigía, 17 de 32</span></div>
+    </div>
   </div>
-  <h2>Descripción del proyecto</h2>
-  <p>Los modelos de IA de frontera ya pueden actuar como agentes autónomos, y los operadores de servicios esenciales empiezan a conectarlos a sus sistemas. AI Guardian es un estándar de gobernanza, sin código, que le dice a una entidad pública o a un operador de infraestructura crítica qué debe exigir antes de encender uno de esos agentes: 32 requisitos de sí o no, cada uno con su evidencia, organizados en cinco bloques (seguridad de los pesos según los niveles SL de RAND, contención, auditoría, líneas rojas y factor humano). Si falla uno, el agente no se enciende.</p>
-  <p>Lo probamos con un caso hipotético, un agente del operador del sistema eléctrico nacional, y con un instrumento de evaluación en línea: dos evaluadoras humanas y una IA aplicaron el estándar por separado para medir si llegan a la misma decisión.</p>
-  <h2>Qué entregamos (MVP)</h2>
-  <div class="grid4">
-    <div class="card"><span class="k">1 · Ficha técnica</span><p>Documento de 2 páginas con riesgo, mecanismo, validación y límites.</p></div>
-    <div class="card"><span class="k">2 · Estándar v3</span><p>Los 32 requisitos verificables, niveles N1 a N3 y gobernanza institucional.</p></div>
-    <div class="card"><span class="k">3 · Instrumento de evaluación</span><p>Esta página: cuestionario compartido, clave, resultados y semáforo por bloque.</p></div>
-    <div class="card"><span class="k">4 · Informe y repositorio</span><p>Informe PDF exportable y <a href="https://github.com/DreamHunterG/AI-Guardian-SL5-Defensive-Hackathon" target="_blank" rel="noopener">repositorio en GitHub</a>.</p></div>
+  <h2>Qué entregamos</h2>
+  <div class="mvp">
+    <a class="mvp-item" href="https://github.com/DreamHunterG/AI-Guardian-SL5-Defensive-Hackathon/blob/main/docs/Ficha-tecnica-AI-Guardian.pdf" target="_blank" rel="noopener"><span class="num">1</span><b>Ficha técnica</b><span>Riesgo, mecanismo, validación y límites en 2 páginas.</span></a>
+    <a class="mvp-item" href="#estandar"><span class="num">2</span><b>Estándar v3</b><span>32 requisitos, niveles N1 a N3 y gobernanza.</span></a>
+    <a class="mvp-item" href="#evaluar"><span class="num">3</span><b>Instrumento</b><span>Cuestionario compartido, clave y semáforo por bloque.</span></a>
+    <a class="mvp-item" href="https://github.com/DreamHunterG/AI-Guardian-SL5-Defensive-Hackathon" target="_blank" rel="noopener"><span class="num">4</span><b>Informe y repositorio</b><span>PDF exportable y código en GitHub.</span></a>
   </div>
   <h2>Equipo</h2>
   <p class="lead">Cuatro guardianas: cada una aporta desde su disciplina a un frente del estándar.</p>
