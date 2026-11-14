@@ -10,6 +10,7 @@ Universidad de los Andes, 14 de noviembre de 2026.
 | 📄 **Ficha técnica** | [`docs/Ficha-tecnica-AI-Guardian.pdf`](docs/Ficha-tecnica-AI-Guardian.pdf) |
 | 🧪 **Instrumento de evaluación en línea** | [AI Guardian · Ficha e instrumento](https://claude.ai/artifact/FHrL3mDPuCneFTfdtoSvKK) |
 | 💻 **Instrumento sin conexión** | [`instrumento/index.html`](instrumento/index.html) |
+| 🎤 **Presentación del pitch (3 min)** | [En línea](https://claude.ai/artifact/BP5DaQdRPssrydPpZr2Nbf) · [`presentacion/index.html`](presentacion/index.html) |
 
 ## En 30 segundos
 
@@ -78,8 +79,10 @@ Sin conexión, abre `instrumento/index.html` en el navegador: las respuestas se 
 ├── README.md
 ├── docs/
 │   └── Ficha-tecnica-AI-Guardian.pdf   # Entregable del Track 5 (2 páginas)
-└── instrumento/
-    └── index.html                      # Ficha e instrumento de evaluación
+├── instrumento/
+│   └── index.html                      # Ficha e instrumento de evaluación
+└── presentacion/
+    └── index.html                      # Pitch de 3 minutos (5 diapositivas; flechas para avanzar)
 ```
 
 ## Equipo
